@@ -1,15 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import logo from './assets/logo.png';
 import user from './assets/user.png';
-import { GlobalInfo } from './Home';
+import { useLocation } from 'react-router-dom';
 
 export default function Header() {
-  // const  {appColor}  = useContext(GlobalInfo);
-
-  // console.warn('appColor from context:', appColor);
-
+  const location = useLocation();
+  console.log(location.state.hero);
   const [movie, setMovie] = useState([]);
-  const [search, setSearch] = useState("titanic");
+  const [search, setSearch] = useState(location.state.searchText);
   const [value, setValue] = useState("");
 
   const dataHandler = async () => {

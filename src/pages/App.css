@@ -1,57 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body{
 padding: 0;
 margin: 0;
 }
-.dragging{
-    cursor: grab;
-}
+.headline{
+    font-family: "Poppins", serif;
+    font-weight: 500;
+  font-style: normal;
+  font-size: 25px;
+  margin-bottom: 5px;
 
+}
+.paragraph{
+    font-family: "Poppins", serif;
+    font-weight: 300;
+    font-style: normal;
+    display: -webkit-box;            
+    -webkit-line-clamp: 3;            
+    -webkit-box-orient: vertical;      
+    overflow: hidden;                 
+    text-overflow: ellipsis;   
+}
+.section{
+    position: relative;
+    top:100%;
+    left: 5%;
+    transform: translate(-10%,-100%);
+    width: 35%;
+    height: 40vh;
+}
+/* 
 .items{
     width: 400px;
     height: 100px;
     border: 1px solid red;
     margin-left: auto;
     margin-right: auto;
-}
-.container{
+} */
+
+.container1 {
+    scroll-snap-type: x mandatory;
+    display: flex;      
+    flex-direction: column;      
+    flex-wrap: wrap;          /* Allow images to wrap if needed */
+    width: 100%;              /* Ensure the container takes full width */
+    height: 100vh;            /* Full height of the viewport */
+    justify-content: center;  /* Center images horizontally */
+    align-items: center;   
+    overflow-y: hidden;   /* Center images vertically */
+  }
+
+.part{
     width: 100%;
     height: 100vh;
-}
-#one{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 200px;
-    background-color: red;
-}
-#two{
-    width: 200px;
-    height: 100px;
-    background-color: green;
-}
-#three{
-    width: 200px;
-    height: 100px;
-    background-color: yellow;
-}
-#four{
-    width: 200px;
-    height: 100px;
-    background-color: paleturquoise;
-}
-#five{
-    width: 200px;
-    height: 100px;
-    background-color: brown;
-}
-#six{
-    width: 200px;
-    height: 100px;
-    background-color: dodgerblue;
-}
-#seven{
-    width: 200px;
-    height: 100px;
-    background-color: pink;
+    scroll-snap-align: center;
 }
