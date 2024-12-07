@@ -2,6 +2,7 @@
 body{
 padding: 0;
 margin: 0;
+overflow-x: hidden;
 }
 .headline{
     font-family: "Poppins", serif;
@@ -49,9 +50,30 @@ margin: 0;
     align-items: center;   
     overflow-y: hidden;   /* Center images vertically */
   }
+  .container1::-webkit-scrollbar{
+    display: none;
+  }
 
 .part{
     width: 100%;
     height: 100vh;
     scroll-snap-align: center;
 }
+.item1{
+    display: grid;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    place-items: center;
+    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    grid-template-rows: auto;
+    white-space: nowrap;
+    gap: 2.5%;
+    grid-auto-flow: column;
+    overflow-x: hidden;
+}
+.imgCollection{
+    background-color: black;
+    color: white;
+}
+

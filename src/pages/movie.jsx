@@ -1,29 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState , useEffect } from 'react';
+import { useNavigate} from 'react-router-dom';
 import logo from './assets/logo.png';
 import user from './assets/user.png';
-import { useLocation } from 'react-router-dom';
+import './App.css'
 
-export default function Header() {
-  const location = useLocation();
-  const [movie, setMovie] = useState([]);
-  const [search, setSearch] = useState(location.state.searchText);
-  const [value, setValue] = useState("");
+export default function movie() {
+  const navigate = useNavigate();
+    const [value, setValue] = useState("");
+    let [search , setSearch] = useState("movie");
+    let [movie2 , setMovie2] = useState([]);
 
-  const dataHandler = async () => {
-    try {
-      const response = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=de15ef2f&s=${search}`);
-      const data = await response.json();
-      setMovie(data.Search);
-    } catch (err) {
-      console.error("Error fetching data:", err);
+    const handleLogo = ()=>{
+      navigate('/');
+  }
+
+    const handleMovie = ()=>{
+      navigate('/moviemovie');
     }
-  };
+    const dataHandler = async () => {
+        try {
+            const response = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=de15ef2f&s=${search}`);
+            const data = await response.json();
+            setMovie2(data.Search);
+        } catch (err) {
+            console.error("Error fetching data:", err);
+        }
+    };
 
-  useEffect(() => {
-    dataHandler();
-  }, [search]);
-
+      useEffect(() => {
+        if (search) {
+          dataHandler();
+        }
+      }, [search]);
   return (
+    <>
     <div>
       <nav
         className='bg-yellow-10'
@@ -36,10 +46,10 @@ export default function Header() {
       >
         <ul className='list-none' style={{ display: 'flex', marginLeft: '8%', alignItems: 'center' }}>
           <li style={{ marginRight: '22px', cursor: 'pointer' }}>
-            <img src={logo} alt="logo" style={{ width: '200px', height: '50px', objectFit: 'contain' }} />
+            <img onClick={handleLogo} src={logo} alt="logo" style={{ width: '200px', height: '50px', objectFit: 'contain' }} />
           </li>
           <li style={{ marginRight: '22px', cursor: 'pointer' }}>TV Shows</li>
-          <li style={{ cursor: 'pointer' }}>Movies</li>
+          <li style={{ cursor: 'pointer' }} onClick={handleMovie}>Movies</li>
         </ul>
 
         <div style={{ marginRight: '8%', display: 'flex', alignItems: 'center' }}>
@@ -63,15 +73,15 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Movie Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '12px' }}>
-        {movie.map((data, index) => (
+    </div>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '12px' }}>
+        {movie2.map((data, index) => (
           <div key={index} className="card" style={{ padding: '16px' }}>
             <h1>{data.Title}</h1>
             <img style={{ width: '100%', height: 'auto', objectFit: 'cover' }} src={data.Poster} alt="Movie Poster" />
           </div>
         ))}
       </div>
-    </div>
-  );
+    </>
+  )
 }
